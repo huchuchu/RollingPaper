@@ -2,16 +2,24 @@ com/huchuchu/paper/springboot/web/dto/PostsResponseDto.java
  com.huchuchu.paper.springboot.web.dto.PostsResponseDto
 com/huchuchu/paper/springboot/Application.java
  com.huchuchu.paper.springboot.Application
+com/huchuchu/paper/springboot/web/IndexController.java
+ com.huchuchu.paper.springboot.web.IndexController
 com/huchuchu/paper/springboot/web/dto/HelloResponseDto.java
  com.huchuchu.paper.springboot.web.dto.HelloResponseDto
 com/huchuchu/paper/springboot/web/dto/PostsUpdateRequestDto.java
  com.huchuchu.paper.springboot.web.dto.PostsUpdateRequestDto
  com.huchuchu.paper.springboot.web.dto.PostsUpdateRequestDto$PostsUpdateRequestDtoBuilder
+com/huchuchu/paper/springboot/domain/posts/PostsRepository.java
+ com.huchuchu.paper.springboot.domain.posts.PostsRepository
 com/huchuchu/paper/springboot/web/dto/PostsSaveRequestDto.java
  com.huchuchu.paper.springboot.web.dto.PostsSaveRequestDto
  com.huchuchu.paper.springboot.web.dto.PostsSaveRequestDto$PostsSaveRequestDtoBuilder
-com/huchuchu/paper/springboot/web/IndexController.java
- com.huchuchu.paper.springboot.web.IndexController
+com/huchuchu/paper/springboot/domain/user/Role.java
+ com.huchuchu.paper.springboot.domain.user.Role
+com/huchuchu/paper/springboot/web/PostsApiController.java
+ com.huchuchu.paper.springboot.web.PostsApiController
+com/huchuchu/paper/springboot/web/dto/PostsListResponseDto.java
+ com.huchuchu.paper.springboot.web.dto.PostsListResponseDto
 com/huchuchu/paper/springboot/domain/posts/Posts.java
  com.huchuchu.paper.springboot.domain.posts.Posts
  com.huchuchu.paper.springboot.domain.posts.Posts$PostsBuilder
@@ -19,11 +27,19 @@ com/huchuchu/paper/springboot/web/HelloController.java
  com.huchuchu.paper.springboot.web.HelloController
 com/huchuchu/paper/springboot/domain/BaseTimeEntity.java
  com.huchuchu.paper.springboot.domain.BaseTimeEntity
-com/huchuchu/paper/springboot/domain/posts/PostsRepository.java
- com.huchuchu.paper.springboot.domain.posts.PostsRepository
-com/huchuchu/paper/springboot/web/PostsApiController.java
- com.huchuchu.paper.springboot.web.PostsApiController
-com/huchuchu/paper/springboot/web/dto/PostsListResponseDto.java
- com.huchuchu.paper.springboot.web.dto.PostsListResponseDto
 com/huchuchu/paper/springboot/service/PostsService.java
  com.huchuchu.paper.springboot.service.PostsService
+com/huchuchu/paper/springboot/domain/user/UserRepository.java
+ com.huchuchu.paper.springboot.domain.user.UserRepository
+com/huchuchu/paper/springboot/config/auth/CustomOAuth2UserService.java
+ com.huchuchu.paper.springboot.config.auth.CustomOAuth2UserService
+com/huchuchu/paper/springboot/config/auth/dto/SessionUser.java
+ com.huchuchu.paper.springboot.config.auth.dto.SessionUser
+com/huchuchu/paper/springboot/domain/user/User.java
+ com.huchuchu.paper.springboot.domain.user.User
+ com.huchuchu.paper.springboot.domain.user.User$UserBuilder
+com/huchuchu/paper/springboot/config/auth/dto/OAuthAttributes.java
+ com.huchuchu.paper.springboot.config.auth.dto.OAuthAttributes
+ com.huchuchu.paper.springboot.config.auth.dto.OAuthAttributes$OAuthAttributesBuilder
+com/huchuchu/paper/springboot/config/auth/SecurityConfig.java
+ com.huchuchu.paper.springboot.config.auth.SecurityConfig

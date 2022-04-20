@@ -10,11 +10,17 @@
 <body>
 <nav class="navbar navbar-light bg-light justify-content-end">
 
+    {{#name}}
+        logout
+    {{/name}}
+
+    {{^name}}
     <form class="form-inline">
+        <a href="/oauth2/authorization/google" class="btn btn-sm btn-outline-info" role="button" >google</a>
         <button class="btn btn-sm btn-outline-success" type="button">로그인</button>
         <button class="btn btn-sm btn-outline-secondary" type="button">회원가입</button>
     </form>
-
+     {{/name}}
 </nav>
 <blockquote class="blockquote text-center">
 <h3>huchuchu Board</h3>
