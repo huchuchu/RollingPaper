@@ -39,6 +39,9 @@ dependencies {
     //spring security
     implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 
+    //h2에 DB값 계속 저장
+    implementation('org.springframework.session:spring-session-jdbc')
+
 
 }
 
