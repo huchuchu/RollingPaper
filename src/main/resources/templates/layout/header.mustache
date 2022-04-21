@@ -11,7 +11,8 @@
 <nav class="navbar navbar-light bg-light justify-content-end">
 
     {{#name}}
-        logout
+        logged in as : <span id="user">{{name}}</span>
+        <a href="/logout" class="btn btn-sm btn-outline-info" role="button">로그아웃</a>
     {{/name}}
 
     {{^name}}
