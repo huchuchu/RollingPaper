@@ -34,11 +34,14 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
         OAuth2User oAuth2User = delegate.loadUser(userRequest);
 
+        // 구글인지 네이번지 판별
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
 
+        // nameAttributeKey에 들어가는 키값
         String userNameAttributeName = userRequest.getClientRegistration()
                 .getProviderDetails().getUserInfoEndpoint()
                 .getUserNameAttributeName();
+
 
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 

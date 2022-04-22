@@ -2,9 +2,8 @@ package com.huchuchu.paper.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
-@EnableJpaAuditing
+//@EnableJpaAuditing test하기위해 분리
 @SpringBootApplication
 public class Application {
 

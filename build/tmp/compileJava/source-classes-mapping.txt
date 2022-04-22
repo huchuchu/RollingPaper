@@ -1,7 +1,7 @@
 com/huchuchu/paper/springboot/web/dto/PostsResponseDto.java
  com.huchuchu.paper.springboot.web.dto.PostsResponseDto
-com/huchuchu/paper/springboot/Application.java
- com.huchuchu.paper.springboot.Application
+com/huchuchu/paper/springboot/config/auth/SecurityConfig.java
+ com.huchuchu.paper.springboot.config.auth.SecurityConfig
 com/huchuchu/paper/springboot/config/auth/LoginUser.java
  com.huchuchu.paper.springboot.config.auth.LoginUser
 com/huchuchu/paper/springboot/service/PostsService.java
@@ -14,8 +14,9 @@ com/huchuchu/paper/springboot/web/dto/PostsUpdateRequestDto.java
 com/huchuchu/paper/springboot/web/dto/PostsSaveRequestDto.java
  com.huchuchu.paper.springboot.web.dto.PostsSaveRequestDto
  com.huchuchu.paper.springboot.web.dto.PostsSaveRequestDto$PostsSaveRequestDtoBuilder
-com/huchuchu/paper/springboot/config/auth/SecurityConfig.java
- com.huchuchu.paper.springboot.config.auth.SecurityConfig
+com/huchuchu/paper/springboot/config/auth/dto/OAuthAttributes.java
+ com.huchuchu.paper.springboot.config.auth.dto.OAuthAttributes
+ com.huchuchu.paper.springboot.config.auth.dto.OAuthAttributes$OAuthAttributesBuilder
 com/huchuchu/paper/springboot/domain/user/Role.java
  com.huchuchu.paper.springboot.domain.user.Role
 com/huchuchu/paper/springboot/web/PostsApiController.java
@@ -46,6 +47,7 @@ com/huchuchu/paper/springboot/domain/BaseTimeEntity.java
  com.huchuchu.paper.springboot.domain.BaseTimeEntity
 com/huchuchu/paper/springboot/config/auth/CustomOAuth2UserService.java
  com.huchuchu.paper.springboot.config.auth.CustomOAuth2UserService
-com/huchuchu/paper/springboot/config/auth/dto/OAuthAttributes.java
- com.huchuchu.paper.springboot.config.auth.dto.OAuthAttributes
- com.huchuchu.paper.springboot.config.auth.dto.OAuthAttributes$OAuthAttributesBuilder
+com/huchuchu/paper/springboot/Application.java
+ com.huchuchu.paper.springboot.Application
+com/huchuchu/paper/springboot/config/JpaConfig.java
+ com.huchuchu.paper.springboot.config.JpaConfig

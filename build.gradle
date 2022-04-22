@@ -42,6 +42,9 @@ dependencies {
     //h2에 DB값 계속 저장
     implementation('org.springframework.session:spring-session-jdbc')
 
+    // test에서 임의로 인증된 사용자를 추가하기위해
+    testImplementation("org.springframework.security:spring-security-test")
+
 
 }
 
