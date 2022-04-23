@@ -1,10 +1,12 @@
-com/huchuchu/paper/springboot/domain/posts/PostsRepositoryTest.java
- com.huchuchu.paper.springboot.domain.posts.PostsRepositoryTest
-com/huchuchu/paper/springboot/web/dto/HelloResponseDtoTest.java
- com.huchuchu.paper.springboot.web.dto.HelloResponseDtoTest
 com/huchuchu/paper/springboot/web/HelloControllerTest.java
  com.huchuchu.paper.springboot.web.HelloControllerTest
-com/huchuchu/paper/springboot/web/PostsApiControllerTest.java
- com.huchuchu.paper.springboot.web.PostsApiControllerTest
+com/huchuchu/paper/springboot/web/dto/HelloResponseDtoTest.java
+ com.huchuchu.paper.springboot.web.dto.HelloResponseDtoTest
 com/huchuchu/paper/springboot/web/IndexControllerTest.java
  com.huchuchu.paper.springboot.web.IndexControllerTest
+com/huchuchu/paper/springboot/domain/posts/PostsRepositoryTest.java
+ com.huchuchu.paper.springboot.domain.posts.PostsRepositoryTest
+com/huchuchu/paper/springboot/web/PostsApiControllerTest.java
+ com.huchuchu.paper.springboot.web.PostsApiControllerTest
+com/huchuchu/paper/springboot/domain/posts/PostBoardRepositoryTest.java
+ com.huchuchu.paper.springboot.domain.posts.PostBoardRepositoryTest

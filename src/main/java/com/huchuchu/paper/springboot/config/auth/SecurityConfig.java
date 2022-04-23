@@ -27,11 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .oauth2Login()
                     .userInfoEndpoint().userService(customOAuth2UserService);
 
-        System.out.println("=====");
-        System.out.println(Role.USER.name());
-        System.out.println(Role.USER.getKey());
-        System.out.println(Role.USER.getTitle());
-        System.out.println("======");
 
     }
 

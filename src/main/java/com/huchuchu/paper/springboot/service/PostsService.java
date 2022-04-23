@@ -1,7 +1,9 @@
 package com.huchuchu.paper.springboot.service;
 
+
 import com.huchuchu.paper.springboot.domain.posts.Posts;
 import com.huchuchu.paper.springboot.domain.posts.PostsRepository;
+import com.huchuchu.paper.springboot.domain.user.UserRepository;
 import com.huchuchu.paper.springboot.web.dto.PostsListResponseDto;
 import com.huchuchu.paper.springboot.web.dto.PostsResponseDto;
 import com.huchuchu.paper.springboot.web.dto.PostsSaveRequestDto;
@@ -19,8 +21,12 @@ public class PostsService {
 
     private final PostsRepository postsRepository;
 
+    private final UserRepository userRepository;
+
+
     @Transactional
     public Long save(PostsSaveRequestDto requestDto){
+
         return postsRepository.save(requestDto.toEntity()).getId();
     }
 
@@ -57,6 +63,8 @@ public class PostsService {
 
         postsRepository.delete(posts);
     }
+
+
 
 
 

@@ -2,28 +2,53 @@
 <html>
 <head>
     <title>huchuchu Borad</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
 </head>
 <body>
-<nav class="navbar navbar-light bg-light justify-content-end">
 
-    {{#name}}
-        logged in as : <span id="user">{{name}}</span>
-        <a href="/logout" class="btn btn-sm btn-outline-info" role="button">로그아웃</a>
-    {{/name}}
+<div class="container">
 
-    {{^name}}
-    <form class="form-inline">
-        <a href="/oauth2/authorization/naver" class="btn btn-sm btn-outline-info" role="button" >naver</a>
-        <a href="/oauth2/authorization/google" class="btn btn-sm btn-outline-info" role="button" >google</a>
-        <button class="btn btn-sm btn-outline-success" type="button">로그인</button>
-        <button class="btn btn-sm btn-outline-secondary" type="button">회원가입</button>
-    </form>
-     {{/name}}
-</nav>
-<blockquote class="blockquote text-center">
-<h3>huchuchu Board</h3>
-</blockquote>
+    <div class="row">
+        <div class="col">
+            <nav class="navbar navbar-light bg-light justify-content-end">
+
+                {{#name}}
+                    logged in as : <span id="user">{{name}}</span>
+                    <a href="/logout" class="btn btn-sm btn-outline-info" role="button">로그아웃</a>
+                {{/name}}
+
+                {{^name}}
+                    <form class="form-inline">
+                        <a href="/oauth2/authorization/naver" class="btn btn-sm btn-outline-info"
+                           role="button">naver</a>
+                        <a href="/oauth2/authorization/google" class="btn btn-sm btn-outline-info"
+                           role="button">google</a>
+                    </form>
+                {{/name}}
+            </nav>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <!--세로메뉴-->
+        <div class="col-2">
+            <p>Rolling Paper</p>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Lorem</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Ipsum</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Dolor</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Disabled</a>
+                </li>
+            </ul>
+        </div>

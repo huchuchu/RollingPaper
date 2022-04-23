@@ -1,45 +1,45 @@
 {{>layout/header}}
 
-<h1>스프링 부트로 시작하는 웹 서비스</h1>
-<div class="container">
-    <div class="col-md-10">
-        <div class="row">
-            <div class="col-md-5">
-                <a href="/posts/save" role="button" class="btn btn-sm btn-warning">글 등록</a>
-            </div>
-        </div>
+<!--목록 출력 영역-->
 
-
-        <br>
-    <!--목록 출력 영역-->
-
-        <table class="table table-horizontal table-bordered">
-            <thead class="thead-strong">
+<div class="col-10">
+    {{#name}}
+    <a href="/posts/save" role="button" class="btn btn-sm btn-warning">글 등록</a>
+    {{/name}}
+    <br>
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th class="text-center" width="10%">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+            </th>
+            <th class="text-center" width="10%">#</th>
+            <th class="text-center" width="40%">제목</th>
+            <th class="text-center" width="20%">작성자</th>
+            <th class="text-center" width="20%">작성일</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#posts}}
             <tr>
-                <th  class="text-center" width="10%">
-                    <input type="checkbox" aria-label="Checkbox for following text input">
-                </th>
-                <th class="text-center" width="10%" >#</th>
-                <th class="text-center" width="40%">제목</th>
-                <th class="text-center" width="20%">작성자</th>
-                <th class="text-center" width="20%">작성일</th>
+                <td class="text-center"><input type="checkbox" aria-label="Checkbox for following text input">
+                </td>
+                <td class="text-center">{{id}}</td>
+                <td class="text-center"><a href="/posts/select/{{id}}">{{title}}</a></td>
+                <td class="text-center">{{author}}</td>
+                <td class="text-center">{{modifiedDate}}</td>
             </tr>
-            </thead>
-            <tbody id="tbody">
-            {{#posts}}
-                <tr>
-                    <td class="text-center"><input type="checkbox" aria-label="Checkbox for following text input"></td>
-                    <td class="text-center">{{id}}</td>
-                    <td class="text-center"><a href="/posts/select/{{id}}">{{title}}</a></td>
-                    <td class="text-center">{{author}}</td>
-                    <td class="text-center">{{modifiedDate}}</td>
-                </tr>
-            {{/posts}}
-            </tbody>
+        {{/posts}}
+        </tbody>
 
-        </table>
-    </div>
+    </table>
+
 </div>
+
+</div>
+</div>
+</div>
+
 
 {{>layout/footer}}
 

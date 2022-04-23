@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.*;
+import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
@@ -47,6 +47,8 @@ public class PostsApiControllerTest {
     @Autowired
     private PostsRepository postsRepository;
 
+
+
     @BeforeEach
     public void setup(){
         mvc = MockMvcBuilders
@@ -60,6 +62,9 @@ public class PostsApiControllerTest {
     public void tearDown() throws Exception{
         postsRepository.deleteAll();
     }
+
+
+
 
     @Test
     @WithMockUser(roles = "USER")
@@ -97,6 +102,8 @@ public class PostsApiControllerTest {
 
 
     }
+
+
 
     @Test
     @WithMockUser(roles = "USER")
