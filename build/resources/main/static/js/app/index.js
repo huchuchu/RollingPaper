@@ -9,7 +9,7 @@ var index = {
         var data = {
             title: $('#title').val(),
             author: $('#author').val(),
-            content: $('#content').val()
+            dDay: $('#dDay').val()
         };
 
         $.ajax({
