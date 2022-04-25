@@ -1,0 +1,68 @@
+{{>layout/header}}
+
+<!--목록 출력 영역-->
+
+    <div class="col-10">
+        <div class="row">
+        {{#name}}
+        <a href="/posts/save" role="button" class="btn btn-sm btn-warning">글 등록</a>
+        {{/name}}
+        </div>
+        <!--테이블-->
+        <div class="row">
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th class="text-center" width="10%">#</th>
+                <th class="text-center" width="40%">제목</th>
+                <th class="text-center" width="20%">작성자</th>
+                <th class="text-center" width="20%">작성일</th>
+                <th class="text-center" width="10%">조회수</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#posts}}
+                <tr>
+                    <td class="text-center">{{id}}</td>
+                    <td class="text-center"><a href="/posts/select/{{id}}">{{title}}</a></td>
+                    <td class="text-center">{{author}}</td>
+                    <td class="text-center">{{modifiedDate}}</td>
+                    <td class="text-center">{{view}}</td>
+                </tr>
+            {{/posts}}
+            </tbody>
+        </table>
+        </div>
+
+            <!--페이징-->
+            <div class="row">
+                <div class="col text-center">
+                    {{#hasPrev}}
+                        <a href="?page={{previous}}" role="button" class="btn bi bi-caret-left-square-fill"><<</a>
+                    {{/hasPrev}}
+                    {{^hasPrev}}
+                        <a href="#" role="button" class="btn bi bi-caret-left-square-fill" disabled><<</a>
+                    {{/hasPrev}}
+
+                    {{#hasNext}}
+                        <a href="?page={{next}}" role="button" class="btn bi bi-caret-right-square-fill">>></a>
+                    {{/hasNext}}
+                    {{^hasNext}}
+                        <a href="#" role="button" class="btn bi bi-caret-right-square-fill" disabled>>></a>
+                    {{/hasNext}}
+
+
+                </div>
+            </div>
+
+    </div>
+
+
+
+</div>
+</div>
+
+
+
+{{>layout/footer}}
+
