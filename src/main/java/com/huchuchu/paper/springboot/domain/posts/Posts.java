@@ -14,33 +14,45 @@ public class Posts extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id;        // 게시글 Id
 
     @Column(length = 500, nullable = false)
     private String title;
 
-/*    @Column(columnDefinition = "TEXT", nullable = false)
-    private String content;*/
+    @Column(length = 500, nullable = false)
+    private String content;
 
+    @Column (nullable = false)
     private String author;
 
-    private String dDay;
+    @Column (nullable = false)
+    private Long userId;        //게시글 작성자 Id
 
-    private Long userId;
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int view;
+
+
+/*
+    @Column(name = "FILE_ID")
+    private Long fileId;        //사진파일 Id
+    
+    private String filePath;   // 사진 저장위치
+*/
 
 
 
     @Builder
-    public Posts(String title, String author, String dDay, Long userId){
+    public Posts(String title, String content, String author, Long userId, int view ){
         this.title = title;
-
+        this.content = content;
         this.author = author;
-        this.dDay = dDay;
         this.userId = userId;
+        this.view = view;
     }
 
     public void update(String title, String content){
         this.title = title;
+        this.content = content;
 
     }
 

@@ -1,6 +1,5 @@
 package com.huchuchu.paper.springboot.web.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.huchuchu.paper.springboot.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,17 +13,17 @@ public class PostsSaveRequestDto {
 
     private String title;
     private String author;
+    private String content;
+    private Long userId;    //게시글 작성자 Id
 
-    @JsonProperty("dDay")
-    private String dDay;
 
-    private Long userId;
+
 
     @Builder
-    public PostsSaveRequestDto(String title,  String author, String dDay, Long userId){
+    public PostsSaveRequestDto(String title, String content,String author, Long userId){
         this.title = title;
         this.author = author;
-        this.dDay = dDay;
+        this.content = content;
         this.userId = userId;
     }
 
@@ -34,7 +33,7 @@ public class PostsSaveRequestDto {
         return Posts.builder()
                 .title(title)
                 .author(author)
-                .dDay(dDay)
+                .content(content)
                 .userId(userId)
                 .build();
     }

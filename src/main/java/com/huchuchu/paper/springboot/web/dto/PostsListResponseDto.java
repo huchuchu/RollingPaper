@@ -11,22 +11,17 @@ import java.time.format.FormatStyle;
 @Getter
 public class PostsListResponseDto {
 
-    private Long id;
+    private Long id;        //posts Id
     private String title;
     private String author;
-    private  String modifiedDate;
+    private String modifiedDate;
 
-/*    private String content;*/
-//    private LocalDateTime modifiedDate;
 
     public PostsListResponseDto(Posts entity){
         this.id = entity.getId();
         this.title = entity.getTitle();
-  /*      this.content = entity.getContent();*/
-        //this.modifiedDate = entity.getModifiedDate();
         this.author =  entity.getAuthor();
         this.modifiedDate = yyMmDd(entity.getModifiedDate());
-
     }
 
     public String yyMmDd(LocalDateTime modifiedDateTime){

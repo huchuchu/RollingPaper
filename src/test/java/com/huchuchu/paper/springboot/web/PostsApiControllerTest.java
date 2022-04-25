@@ -76,7 +76,7 @@ public class PostsApiControllerTest {
 
         PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
                 .title(title)
-                .content(content)
+
                 .author("author")
                 .build();
 
@@ -98,7 +98,7 @@ public class PostsApiControllerTest {
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(title);
-        assertThat(all.get(0).getContent()).isEqualTo(content);
+
 
 
     }
@@ -112,8 +112,7 @@ public class PostsApiControllerTest {
 
         Posts savePosts = postsRepository.save(Posts.builder()
         .title("title")
-        .content("content")
-        .author("aothor")
+         .author("aothor")
         .build());
 
         Long updateId = savePosts.getId();
@@ -144,7 +143,7 @@ public class PostsApiControllerTest {
 
         List<Posts> all = postsRepository.findAll();
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-        assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
+
 
 
     }

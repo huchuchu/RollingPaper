@@ -1,12 +1,11 @@
 {{>layout/header}}
-<h2>게시글보기</h2>
 
-<div class="container">
     <div class="col-md-10">
+
         <form>
             <div class="form-group">
                 <label for="id">글 번호</label>
-                <input type="text" class="form-control" id="id" value="{{post.id}}" readonly>
+                <input type="text" class="form-control" id="postId" value="{{post.id}}" readonly>
             </div>
             <div class="form-group">
                 <label for="title">제목</label>
@@ -17,17 +16,65 @@
                 <input type="text" class="form-control" id="author" value="{{post.author}}" readonly>
             </div>
             <div>
-                <label>DDay</label>
-                <span>{{post.dDay}}</span>
+                <lable for="content">내용</lable>
+                <textarea class="form-control" rows="10" id="content" readonly>{{post.content}}</textarea>
             </div>
         </form>
-        <a href="/" role="button" class="btn btn-outline-secondary">취소</a>
 
+        <!--버튼-->
+        <!--취소 버튼은 모두에게 보임-->
+        <a href="/" role="button" class="btn btn-outline-secondary">취소</a>
+        <!--작성자 보인에게만 보임-->
         {{#chk}}
         <a href="/posts/update/{{post.id}}" class="btn btn-outline-primary">수정</a>
         <button type="button" class="btn btn-outline-danger" id="btn-delete">삭제</button>
          {{/chk}}
+
+
+        <!--댓글 리스트 시작-->
+        <div class="card">
+            <div class="card-header bi bi-chat-dots">✉Comments</div>
+            <!--댓글내용-->
+            <ul class="list-group-flush">
+
+                    <li class="list-group-item">
+                            <span>
+                            <span style="font-size: small"></span>
+                            <span style="font-size: xx-small"></span>&nbsp;
+                            <button class="badge bi bi-pencil-square"> 수정</button>
+                            <button class="badge bi bi-trash"> 삭제</button>
+                            </span>
+                        <div></div>
+                    </li>
+
+            </ul>
+        </div>
+
+        <!--댓글 쓰기 시작-->
+        <br/>
+        <div class="card">
+            <div class="card-header bi bi-chat-right-dots">📌 Write a Comment</div>
+            <!--댓글작성-->
+            <form>
+                <input type="hidden" id="postsId" value="">
+
+                    <div class="card-body">
+                        <textarea id="comment" class="form-control" rows="4" placeholder="댓글을 입력하세요"></textarea>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" id="btn-comment-save"class="btn btn-outline-primary bi bi-pencil-square"> 등록</button>
+                    </div>
+
+                    <div class="card-body" style="font-size: small"><a href="/auth/login">로그인</a>을 하시면 댓글을 등록할 수 있습니다.</div>
+
+            </form>
+        </div>
+
+
     </div>
+
+
+</div>
 </div>
 
 {{>layout/footer}}
