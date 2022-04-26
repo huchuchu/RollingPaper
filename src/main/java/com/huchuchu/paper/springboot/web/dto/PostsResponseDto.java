@@ -11,10 +11,6 @@ public class PostsResponseDto {
     private String author;
     private Long userId;
 
-/*    private Long fileId;
-    private String filePath;*/
-
-/*    private String content;*/
 
     public PostsResponseDto(Posts entity){
         this.id = entity.getId();

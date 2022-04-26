@@ -2,6 +2,8 @@ package com.huchuchu.paper.springboot.web;
 
 import com.huchuchu.paper.springboot.config.auth.LoginUser;
 import com.huchuchu.paper.springboot.config.auth.dto.SessionUser;
+import com.huchuchu.paper.springboot.domain.posts.Comment;
+import com.huchuchu.paper.springboot.domain.posts.CommentRepository;
 import com.huchuchu.paper.springboot.domain.posts.Posts;
 import com.huchuchu.paper.springboot.service.PostsService;
 import com.huchuchu.paper.springboot.web.dto.PostsResponseDto;
@@ -16,12 +18,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RequiredArgsConstructor
 @Controller
 public class IndexController {
 
     private final PostsService postsService;
+    private final CommentRepository commentRepository;
 
     private final HttpSession httpSession;
 
@@ -41,8 +45,7 @@ public class IndexController {
         model.addAttribute("hasNext", list.hasNext());
         model.addAttribute("hasPrev",list.hasPrevious() );
 
-        System.out.println("hasNext"+ list.hasNext());
-        System.out.println("hasPrev"+ list.hasPrevious());
+
 
         if(user != null){
             model.addAttribute("name",user.getName());
@@ -53,18 +56,21 @@ public class IndexController {
 
     /*posts 등록페이지로 가기*/
     @GetMapping("/posts/save")
-    public String postSave(Model model){
+    public String postSave(Model model, @LoginUser SessionUser user){
 
+        model.addAttribute("name", user.getName());
         return "posts-save";
     }
 
 
-
+    /*수정페이지로 가기*/
     @GetMapping("/posts/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model){
+    public String postsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user){
 
         PostsResponseDto dto = postsService.findById(id);
         model.addAttribute("post", dto);
+
+        model.addAttribute("name", user.getName() );
 
         return "posts-update";
 
@@ -76,13 +82,26 @@ public class IndexController {
     @GetMapping("/posts/select/{id}")
     public String postSelect(@PathVariable Long id, Model model, @LoginUser SessionUser user){
 
-        postsService.updateView(id); //view++
+        /*조회수 증가*/
+        postsService.updateView(id);
+        
+        /*게시글 가져오기*/
         PostsResponseDto dto = postsService.findById(id);
 
-        if(user.getId().equals(dto.getUserId()) ){
-            model.addAttribute("chk",true);
+        /*댓글*/
+        List<Comment> list = commentRepository.commentList(dto.getId());
+        if(list.size()>0){
+            model.addAttribute("comments", list);
         }
 
+        /*본인인지 체크 :: 글의 삭제 수정버튼*/
+        if (user.getId().equals(dto.getUserId())) {
+            model.addAttribute("myPosts", true);
+        }
+
+
+        model.addAttribute("loginId", user.getId());
+        model.addAttribute("name", user.getName());
         model.addAttribute("post", dto);
         return "posts-select";
     }

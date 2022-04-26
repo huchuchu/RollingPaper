@@ -25,10 +25,10 @@
         <!--취소 버튼은 모두에게 보임-->
         <a href="/" role="button" class="btn btn-outline-secondary">취소</a>
         <!--작성자 보인에게만 보임-->
-        {{#chk}}
+        {{#myPosts}}
         <a href="/posts/update/{{post.id}}" class="btn btn-outline-primary">수정</a>
         <button type="button" class="btn btn-outline-danger" id="btn-delete">삭제</button>
-         {{/chk}}
+         {{/myPosts}}
 
 
         <!--댓글 리스트 시작-->
@@ -36,17 +36,30 @@
             <div class="card-header bi bi-chat-dots">✉Comments</div>
             <!--댓글내용-->
             <ul class="list-group-flush">
-
+                {{#comments}}
                     <li class="list-group-item">
                             <span>
-                            <span style="font-size: small"></span>
-                            <span style="font-size: xx-small"></span>&nbsp;
-                            <button class="badge bi bi-pencil-square"> 수정</button>
-                            <button class="badge bi bi-trash"> 삭제</button>
+                            <span style="font-size: small">{{userName}}</span>
+                            <span style="font-size: xx-small">{{modifiedDate}}</span>&nbsp;
+                            <button data-toggle="collapse" data-target=".multi-collapse-{{id}}" class="badge bi bi-trash"> 수정</button>
+                                                                                        <!--현재 로그인, 댓글 쓴 사람, 글 아이디, 댓글아이디-->
+                            <button class="badge bi bi-trash" onclick="index.commentDelete({{loginId}},{{userId}},{{post.id}}, {{id}})"> 삭제</button>
                             </span>
-                        <div></div>
-                    </li>
+                        <p class="collapse multi-collapse-{{id}} show">{{comment}}</p>
 
+                        <form class="collapse multi-collapse-{{id}}">
+                            <input type="hidden" id="postsId" value="{{post.id}}">  <!--post id-->
+                            <input type="hidden" id="id" value="{{id}}">            <!--comment id-->
+                            <input type="hidden" id="userId" value="{{userId}}">    <!--댓글 쓴 사람 id-->
+                            <input type="hidden" id="loginId" value="{{loginId}}">  <!--현재 로그인 id-->
+                            <div class="form-group">
+                                <textarea class="form-control" id="comment-content" rows="3">{{comment}}</textarea>
+                            </div>
+                            <button type="button" id="btn-comment-update" class="btn btn-outline-primary bi bi-pencil-square"> 수정</button>
+                        </form>
+
+                    </li>
+                {{/comments}}
             </ul>
         </div>
 
@@ -56,7 +69,7 @@
             <div class="card-header bi bi-chat-right-dots">📌 Write a Comment</div>
             <!--댓글작성-->
             <form>
-                <input type="hidden" id="postsId" value="">
+                <input type="hidden" id="postsId" value="{{post.id}}">
 
                     <div class="card-body">
                         <textarea id="comment" class="form-control" rows="4" placeholder="댓글을 입력하세요"></textarea>
@@ -64,9 +77,6 @@
                     <div class="card-footer">
                         <button type="button" id="btn-comment-save"class="btn btn-outline-primary bi bi-pencil-square"> 등록</button>
                     </div>
-
-                    <div class="card-body" style="font-size: small"><a href="/auth/login">로그인</a>을 하시면 댓글을 등록할 수 있습니다.</div>
-
             </form>
         </div>
 

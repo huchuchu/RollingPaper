@@ -23,7 +23,7 @@ public class PostsApiController {
     private final FileService fileService;
 
 
-    /*Posts 등록_old*/
+    /*Posts 등록*/
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto, @LoginUser SessionUser user){
 

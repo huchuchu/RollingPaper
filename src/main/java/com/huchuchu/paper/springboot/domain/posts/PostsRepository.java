@@ -16,4 +16,5 @@ public interface PostsRepository extends JpaRepository<Posts, Long> {
     int updateView (Long id);
 
 
+
 }

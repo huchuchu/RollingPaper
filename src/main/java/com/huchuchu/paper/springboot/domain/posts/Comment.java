@@ -45,6 +45,12 @@ public class Comment {
         this.postId = postId;
         this.userName = userName;
     }
+    
+    /*comment 수정*/
+    public void update(String comment){
+        this.comment = comment;
+    }
+
 
 
 }
