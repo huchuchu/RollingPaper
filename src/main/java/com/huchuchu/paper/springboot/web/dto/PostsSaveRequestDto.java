@@ -4,9 +4,11 @@ import com.huchuchu.paper.springboot.domain.posts.Posts;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+
 @Getter
 @NoArgsConstructor
 public class PostsSaveRequestDto {
@@ -15,19 +17,17 @@ public class PostsSaveRequestDto {
     private String author;
     private String content;
     private Long userId;    //게시글 작성자 Id
-
-
+    private String ectDate = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy.MM.dd.HH.mm"));
 
 
     @Builder
-    public PostsSaveRequestDto(String title, String content,String author, Long userId){
+    public PostsSaveRequestDto(String title, String content,String author, Long userId, String ectDate){
         this.title = title;
         this.author = author;
         this.content = content;
         this.userId = userId;
+        this.ectDate = ectDate;
     }
-
-
 
     public Posts toEntity(){
         return Posts.builder()
@@ -35,7 +35,14 @@ public class PostsSaveRequestDto {
                 .author(author)
                 .content(content)
                 .userId(userId)
+                .ectDate(ectDate)
                 .build();
+    }
+    
+    /*저장할 때 userId와 author 추가*/
+    public void addUserIdAndAuthor(Long userId, String author){
+        this.userId = userId;
+        this.author = author;
     }
 
 

@@ -27,11 +27,13 @@ public class PostsApiController {
     @PostMapping("/api/v1/posts")
     public Long save(@RequestBody PostsSaveRequestDto requestDto, @LoginUser SessionUser user){
 
-        // 게시글에 userId추가
+/*        // 게시글에 userId추가
         requestDto.setUserId(user.getId());
         // 게시글에 author 추가
-        requestDto.setAuthor(user.getName());
-
+        requestDto.setAuthor(user.getName());*/
+        
+        // 게시글에 userId와 author 추가
+        requestDto.addUserIdAndAuthor(user.getId(), user.getName());
         return  postsService.save(requestDto);
     }
 

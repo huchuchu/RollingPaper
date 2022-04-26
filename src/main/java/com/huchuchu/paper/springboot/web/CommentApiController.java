@@ -19,9 +19,11 @@ public class CommentApiController {
     @PostMapping("/api/v1/posts/{id}/comment")
     public Long saveComment(@RequestBody CommentRequestDto requestDto, @LoginUser SessionUser user){
 
-        requestDto.setUserId(user.getId());
-        requestDto.setUserName(user.getName());
-
+/*        requestDto.setUserId(user.getId());
+        requestDto.setUserName(user.getName());*/
+        
+        // userId와 userName을 추가로 저장
+        requestDto.addUserIdAndUserName(user.getId(), user.getName());
         return commentService.saveComment(requestDto);
     }
 

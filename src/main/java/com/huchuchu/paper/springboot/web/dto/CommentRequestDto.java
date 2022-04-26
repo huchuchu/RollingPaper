@@ -5,12 +5,11 @@ import com.huchuchu.paper.springboot.domain.posts.Comment;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-@Setter
+
 @Getter
 @NoArgsConstructor
 public class CommentRequestDto {
@@ -42,6 +41,11 @@ public class CommentRequestDto {
                 .postId(postId)
                 .userName(userName)
                 .build();
+    }
+
+    public void addUserIdAndUserName(Long userId, String userName){
+        this.userName = userName;
+        this.userId = userId;
     }
 
 

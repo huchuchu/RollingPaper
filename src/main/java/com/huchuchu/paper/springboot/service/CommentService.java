@@ -48,7 +48,7 @@ public class CommentService {
         Comment comment = commentRepository.findById(dto.getId())
         .orElseThrow(()-> new IllegalArgumentException("해당 코멘트가 없습니다"+dto.getId()));
 
-        comment.update(dto.getComment());
+        comment.update(dto.getComment(), dto.getModifiedDate());
         return dto.getId();
     }
 

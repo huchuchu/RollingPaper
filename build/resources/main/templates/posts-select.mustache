@@ -2,7 +2,7 @@
 
     <div class="col-md-10">
 
-        <form>
+
             <div class="form-group">
                 <label for="id">글 번호</label>
                 <input type="text" class="form-control" id="postId" value="{{post.id}}" readonly>
@@ -19,7 +19,7 @@
                 <lable for="content">내용</lable>
                 <textarea class="form-control" rows="10" id="content" readonly>{{post.content}}</textarea>
             </div>
-        </form>
+
 
         <!--버튼-->
         <!--취소 버튼은 모두에게 보임-->
@@ -55,7 +55,9 @@
                             <div class="form-group">
                                 <textarea class="form-control" id="comment-content" rows="3">{{comment}}</textarea>
                             </div>
-                            <button type="button" id="btn-comment-update" class="btn btn-outline-primary bi bi-pencil-square"> 수정</button>
+                                                                                                    <!--포스트Id   댓글Id   댓글쓴사람Id   현재로그인Id-->
+                            <button type="button" id="btn-comment-update" onclick="index.commentUpdate({{post.id}},{{id}},{{userId}},{{loginId}},{{comment}} )"
+                                    class="btn btn-outline-primary bi bi-pencil-square"> 수정</button>
                         </form>
 
                     </li>

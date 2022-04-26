@@ -29,8 +29,18 @@ public class IndexController {
 
     private final HttpSession httpSession;
 
+    @GetMapping("/posts/userInfo")
+    public String userInfo(@LoginUser SessionUser user, Model model){
+
+
+        model.addAttribute("name", user.getName() );
+        model.addAttribute("user", user);
+        return "UserInfo";
+    }
+
+
     @GetMapping("/")                                                /*페이징*/
-    public String index(Model model, @LoginUser SessionUser user, @PageableDefault(sort = "id",size = 2,direction = Sort.Direction.DESC)Pageable pageable){
+    public String index(Model model, @LoginUser SessionUser user, @PageableDefault(sort = "id",direction = Sort.Direction.DESC)Pageable pageable){
 
         // 게시판은 페이징 sessionUser는 어노테이션으로 구현
 /*      model.addAttribute("posts", postsService.findAllDesc());

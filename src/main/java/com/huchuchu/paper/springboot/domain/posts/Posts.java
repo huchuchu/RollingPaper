@@ -31,28 +31,22 @@ public class Posts extends BaseTimeEntity {
     @Column(columnDefinition = "integer default 0", nullable = false)
     private int view;
 
-
-/*
-    @Column(name = "FILE_ID")
-    private Long fileId;        //사진파일 Id
-    
-    private String filePath;   // 사진 저장위치
-*/
-
-
+    private String ectDate;
 
     @Builder
-    public Posts(String title, String content, String author, Long userId, int view ){
+    public Posts(String title, String content, String author, Long userId, int view, String ectDate ){
         this.title = title;
         this.content = content;
         this.author = author;
         this.userId = userId;
         this.view = view;
+        this.ectDate = ectDate;
     }
 
-    public void update(String title, String content){
+    public void update(String title, String content, String ectDate){
         this.title = title;
         this.content = content;
+        this.ectDate = ectDate;
 
     }
 

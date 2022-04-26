@@ -47,8 +47,9 @@ public class Comment {
     }
     
     /*comment 수정*/
-    public void update(String comment){
+    public void update(String comment, String modifiedDate){
         this.comment = comment;
+        this.modifiedDate = modifiedDate;
     }
 
 

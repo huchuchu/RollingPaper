@@ -16,17 +16,19 @@
             <nav class="navbar navbar-light bg-light justify-content-end">
 
                 {{#name}}
-                    logged in as : <span id="user">{{name}}</span>
+                    <span id="user">{{name}}님 반갑습니다. </span>
                     <a href="/logout" class="btn btn-sm btn-outline-info" role="button">로그아웃</a>
                 {{/name}}
 
                 {{^name}}
                     <form class="form-inline">
+                        <a href="/login" class="btn btn-sm btn-outline-danger" role="button">로그인</a>
+                                                <!--
                         <span>로그인 또는 회원가입이 필요합니다 😊 </span>
                         <a href="/oauth2/authorization/naver" class="btn btn-sm btn-outline-info"
                            role="button">naver</a>
                         <a href="/oauth2/authorization/google" class="btn btn-sm btn-outline-info"
-                           role="button">google</a>
+                           role="button">google</a>-->
                     </form>
                 {{/name}}
             </nav>
@@ -40,11 +42,12 @@
             <p>Board Project</p>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">🏘 홈</a>
+                    <a class="nav-link active" href="/">🏘 홈</a>
                 </li>
+                {{#name}}
                 <li class="nav-item">
-                    <a class="nav-link" href="#">😎 내정보</a>
+                    <a class="nav-link" href="/posts/userInfo">😎 내정보</a>
                 </li>
-
+                {{/name}}
             </ul>
         </div>
