@@ -23,13 +23,14 @@ public class CommentRequestDto {
     private String userName;
 
     @Builder
-    public CommentRequestDto(String comment, String createDate, String modifiedDate, Long userId, Long  postId, String userName){
+    public CommentRequestDto(String comment, String createDate, String modifiedDate, Long userId, Long  postId, String userName, Long id){
         this.comment = comment;
         this.createDate = createDate;
         this.modifiedDate = modifiedDate;
         this.userId = userId;
         this.postId = postId;
         this.userName = userName;
+        this.id = id;
     }
 
     public Comment toEntity(){

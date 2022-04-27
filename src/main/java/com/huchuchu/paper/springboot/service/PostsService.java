@@ -29,6 +29,7 @@ public class PostsService {
     public Long save(PostsSaveRequestDto requestDto){
 
         return postsRepository.save(requestDto.toEntity()).getId();
+
     }
 
     /*게시글 수정*/

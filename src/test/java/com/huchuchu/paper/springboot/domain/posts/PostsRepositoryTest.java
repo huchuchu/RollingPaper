@@ -25,21 +25,28 @@ public class PostsRepositoryTest {
         postsRepository.deleteAll();
     }
 
+
+
     @Test
     public void 게시글저장_불러오기(){
         //given
 
         String title = "테스트 게시글";
         String content = "테스트 본문";
+        String author = "huchuchu";
+        Long userId = Long.valueOf(1);
+        String ectDate = "2022-04-27";
 
         postsRepository.save(Posts.builder()
                 .title(title)
                 .content(content)
-                .author("huchuchu")
+                .author(author)
+                .userId(userId)
+                .ectDate(ectDate)
                 .build());
         //when
 
-        List<Posts> postsList = postsRepository.findAll();
+        List<Posts> postsList = postsRepository.findAllDesc();
 
         //then
 
@@ -60,6 +67,9 @@ public class PostsRepositoryTest {
         .title("title")
         .content("contnen")
         .author("author")
+        .userId(Long.valueOf(1))
+        .view(1)
+        .ectDate("2022-05-27")
         .build());
 
         //when

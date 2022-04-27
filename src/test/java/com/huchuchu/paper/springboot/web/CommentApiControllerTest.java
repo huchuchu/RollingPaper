@@ -2,10 +2,10 @@ package com.huchuchu.paper.springboot.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.huchuchu.paper.springboot.config.auth.dto.SessionUser;
-import com.huchuchu.paper.springboot.domain.posts.Posts;
-import com.huchuchu.paper.springboot.domain.posts.PostsRepository;
-import com.huchuchu.paper.springboot.web.dto.PostsSaveRequestDto;
-import com.huchuchu.paper.springboot.web.dto.PostsUpdateRequestDto;
+import com.huchuchu.paper.springboot.domain.posts.Comment;
+import com.huchuchu.paper.springboot.domain.posts.CommentRepository;
+import com.huchuchu.paper.springboot.web.dto.CommentRequestDto;
+import com.huchuchu.paper.springboot.web.dto.CommentUpdateDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class PostsApiControllerTest {
+public class CommentApiControllerTest {
 
     @Autowired
     private WebApplicationContext context;
@@ -45,7 +45,7 @@ public class PostsApiControllerTest {
     private TestRestTemplate restTemplate;
 
     @Autowired
-    private PostsRepository postsRepository;
+    private CommentRepository commentRepository;
 
 
     private MockMvc mvc;
@@ -71,123 +71,121 @@ public class PostsApiControllerTest {
 
     @AfterEach
     public void tearDown() throws Exception{
-        postsRepository.deleteAll();
+        commentRepository.deleteAll();
         session.clearAttributes();
     }
 
 
     @Test
     @WithMockUser(roles = "USER")
-    public void Posts_등록된다() throws Exception{
+    public void Comment_등록된다() throws Exception {
+
         //given
+        String comment = "comment";
+        String createDate = "2022-04-12";
+        String modifiedDate = "2022-04-12";
+        Long postId = Long.valueOf(1);
 
-        String title = "테스트 게시글";
-        String content = "테스트 본문";
-        String ectDate = "2022-04-27";
-
-
-        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
-                .title(title)
-                .content(content)
-                .ectDate(ectDate)
+        CommentRequestDto requestDto = CommentRequestDto.builder()
+                .comment(comment)
+                .createDate(createDate)
+                .modifiedDate(modifiedDate)
+                .postId(postId)
                 .build();
 
 
 
-        String url = "http://localhost:"+port+"/api/v1/posts";
+        String url = "http://localhost:"+port+"/api/v1/posts/"+postId+"/comment";
 
         //when
-/*
-        ResponseEntity<Long> responseEntity = restTemplate.postForEntity(url, requestDto, Long.class);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);*/
-
-
         mvc.perform(post(url)
-                .session(session)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(requestDto)))
+        .session(session)
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(new ObjectMapper().writeValueAsString(requestDto)))
                 .andExpect(status().isOk());
 
         //then
 
-        List<Posts> all = postsRepository.findAll();
-        assertThat(all.get(0).getTitle()).isEqualTo(title);
-
-
-
-    }
-
-
-
-    @Test
-    @WithMockUser(roles = "USER")
-    public void Posts_수정된다() throws Exception{
-        // given
-
-        Posts savePosts = postsRepository.save(Posts.builder()
-        .title("title")
-        .author("aothor")
-        .content("content")
-        .userId(Long.valueOf(1))
-        .ectDate("2022-05-27")
-        .build());
-
-        Long updateId = savePosts.getId();
-        String expectedTitle = "title2";
-        String expectedContent = "content2";
-
-        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
-                .title(expectedTitle)
-                .content(expectedContent)
-                .build();
-
-        String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
-
-
-        // when
-/*      HttpEntity<PostsUpdateRequestDto> requestEntity = new HttpEntity<>(requestDto);
-        ResponseEntity<Long> responseEntity = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, Long.class);
-        assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
-        assertThat(responseEntity.getBody()).isGreaterThan(0L);*/
-
-        mvc.perform(put(url)
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(new ObjectMapper().writeValueAsString(requestDto)))
-                .andExpect(status().isOk());
-
-        // then
-
-
-        List<Posts> all = postsRepository.findAll();
-        assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
-
-
+        List<Comment> list = commentRepository.findAll();
+        assertThat(list.get(0).getComment()).isEqualTo(comment);
 
     }
 
     @Test
     @WithMockUser(roles = "USER")
-    public void Posts_삭제된다() throws Exception {
+    public void Comment_수정된다() throws Exception{
 
         //given
-        Posts savePosts = postsRepository.save(Posts.builder()
-                .title("title")
-                .author("aothor")
-                .content("content")
+
+        Comment comment = commentRepository.save(Comment.builder()
+        .comment("comment")
+        .postId(Long.valueOf(1))
+        .createdDate("2022-03-44")
+        .modifiedDate("2022-33-43")
+        .userName("huchuchu")
+        .userId(Long.valueOf(1))
+        .build());
+
+        Long updateId = comment.getId();
+        Long postId = comment.getPostId();
+        String updateComment = "comment2";
+        String modifiedDate = "2030-03-03";
+
+        CommentUpdateDto dto = CommentUpdateDto.builder()
+                .comment(updateComment)
+                .id(updateId)
+                .postId(postId)
+                .build();
+
+        String url = "http://localhost:"+port+"/api/v1/posts/"+postId+"/comment/"+updateId;
+
+        // when
+        mvc.perform(put(url)
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(new ObjectMapper().writeValueAsString(dto)))
+                .andExpect(status().isOk());
+
+        //then
+
+        List<Comment> list = commentRepository.findAll();
+        assertThat(list.get(0).getComment()).isEqualTo(updateComment);
+
+    }
+
+    @Test
+    @WithMockUser(roles = "USER")
+    public void Comment_삭제된다() throws Exception{
+
+        //given
+
+        Comment comment = commentRepository.save(Comment.builder()
+                .comment("comment")
+                .postId(Long.valueOf(1))
+                .createdDate("2022-03-44")
+                .modifiedDate("2022-33-43")
+                .userName("huchuchu")
                 .userId(Long.valueOf(1))
-                .ectDate("2022-05-27")
                 .build());
 
-        Long deleteId = savePosts.getId();
+        Long deleteId = comment.getId();
+        Long postId = comment.getPostId();
 
-        String url = "http://localhost:"+port+"/api/v1/posts/"+deleteId;
+        CommentRequestDto requestDto = CommentRequestDto.builder()
+                .postId(postId)
+                .id(deleteId)
+                .build();
+
+        String url = "http://localhost:"+port+"/api/v1/posts/"+postId+"/comment/"+deleteId;
+
         mvc.perform(delete(url)
-        .contentType(MediaType.APPLICATION_JSON))
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(new ObjectMapper().writeValueAsString(requestDto)))
                 .andExpect(status().isOk());
 
 
     }
+
+
 
 
 }

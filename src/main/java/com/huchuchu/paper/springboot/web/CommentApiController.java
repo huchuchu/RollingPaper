@@ -32,7 +32,6 @@ public class CommentApiController {
     public Long deleteComment(@RequestBody CommentRequestDto requestDto){
 
         commentService.deleteComment(requestDto.getPostId(), requestDto.getId());
-
         return requestDto.getId();
     }
 

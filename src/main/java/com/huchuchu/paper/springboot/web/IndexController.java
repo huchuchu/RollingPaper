@@ -40,7 +40,7 @@ public class IndexController {
 
 
     @GetMapping("/")                                                /*페이징*/
-    public String index(Model model, @LoginUser SessionUser user, @PageableDefault(sort = "id",direction = Sort.Direction.DESC)Pageable pageable){
+    public String index(Model model, @LoginUser SessionUser user, @PageableDefault(sort = "id",size = 5,direction = Sort.Direction.DESC)Pageable pageable){
 
         // 게시판은 페이징 sessionUser는 어노테이션으로 구현
 /*      model.addAttribute("posts", postsService.findAllDesc());
